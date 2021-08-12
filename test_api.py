@@ -3,7 +3,7 @@ import unittest
 import json
 from flask_sqlalchemy import SQLAlchemy
 
-from grandprix import create_app
+from app import create_app
 from model import Booking, Developer, Resource
 
 class GrandPrixTestCase(unittest.TestCase):
