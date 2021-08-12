@@ -1,0 +1,10 @@
+.resource {
+    display: inline-block;
+    border: 1px green solid;
+    margin: 8px;
+    padding: 8px;
+}
+
+.resource button {
+    margin: 2px
+}

@@ -1,0 +1,27 @@
+
+
+<div class="modal-header">
+    <h4 class="modal-title">Resource</h4>    
+  </div>
+  <div class="modal-body">
+    <form>
+        <p>Name
+            <input type="text" class="form-control" id="name"
+                required [(ngModel)]="resource.name" name="name">
+        </p>
+    
+        <p>Image url
+            <input type="text" class="form-control" id="img_url"
+                required [(ngModel)]="resource.img_url" name="img_url">
+        </p>  
+        
+        <p>Notes
+            <input type="text" class="form-control" id="note"
+                required [(ngModel)]="resource.note" name="note">
+        </p>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-dark" (click)=submit()>Submit</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('cancel button')">Cancel</button>
+  </div>

@@ -1,0 +1,28 @@
+.resource {
+    display: inline-block;
+    border: 1px green solid;
+    margin: 8px;
+    padding: 8px;
+    position: relative;
+}
+
+.resource button {
+    margin: 2px
+}
+
+.resourceBlocker {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #aa2222cc;
+    margin: 8px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+}
+
+div {
+    border-radius: 8px;
+}

@@ -1,0 +1,38 @@
+<div *ngIf="permissions$ | async as permissions">
+<div *ngIf="permissions.includes('get:resources')">
+    <ng-container *ngFor="let res of dashboard">
+        <div class="resource">
+            <h1>{{res.resource.name}}</h1>
+            <div>
+                <button *ngIf="permissions.includes('post:bookings')" (click)="reserve(res.resource)">BOOK</button>
+            </div>
+            <img [src]="res.resource.img_url"/>
+            <p>{{res.resource.note}}</p>
+            <em>id: {{res.resource.id}}</em>
+            <div>
+                <button *ngIf="permissions.includes('patch:resources')" (click)="editResource(res.resource)">EDIT</button>
+                <button *ngIf="permissions.includes('delete:resources')" (click)=deleteResource(res.resource.id)>DELETE</button>
+            </div>
+            <div *ngIf="res.booking" class="resourceBlocker">
+                In use by {{res.developer.name}} since {{res.booking.start_time | date: 'H:mm'}}.
+                <span *ngIf="res.booking.expected_duration_hours">Expected duration is {{res.booking.expected_duration_hours}} hours.</span>
+                <button (click)=deleteBooking(res.booking.id)>FREE</button>
+            </div>
+        </div>
+    </ng-container>
+</div>
+<div *ngIf="permissions.includes('post:resources')">
+    <button (click)="editResource(null)">New Resource</button>
+</div>
+<div *ngIf="permissions.includes('post:developers')">
+    <button (click)="createDeveloper()">New Developer</button>
+</div>
+<div *ngIf="permissions.includes('delete:developers')">
+    <a routerLink="developers">Manage developers</a>
+</div>
+
+
+<!-- 
+<div *ngIf="permissions$ | async as permissions">
+    {{permissions | json}}
+</div>  -->

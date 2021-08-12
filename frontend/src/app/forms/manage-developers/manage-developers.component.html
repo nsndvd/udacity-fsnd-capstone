@@ -1,0 +1,10 @@
+<a routerLink="">BACK</a>
+
+<h2>Manage developers</h2>
+<ul *ngFor="let developer of developers">
+    <li>
+        {{developer.full_name}} <button (click)=deleteDeveloper(developer.id)>delete</button>
+        <br>
+        <pre>{{developer.username}}</pre>        
+    </li>
+</ul>
