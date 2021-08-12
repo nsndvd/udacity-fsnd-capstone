@@ -1,0 +1,486 @@
+{
+	"info": {
+		"_postman_id": "7ec658d5-ca85-4690-899a-dab7fb674b6e",
+		"name": "grandprix",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "public",
+			"item": [
+				{
+					"name": "/healthy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains healthy=true\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.healthy).to.be.true",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/healthy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"healthy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/resources",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/resources",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/resources",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"img_url\": \"\",\n    \"name\": \"Pirelli\",\n    \"note\": \"This is the 1st testrack!\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/resources",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/resources",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/resources/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"resources",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "developer",
+			"item": [
+				{
+					"name": "/healthy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains healthy=true\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.healthy).to.be.true",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/healthy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"healthy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/resources",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains healthy=true\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an(\"array\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/resources",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/resources",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"img_url\": \"\",\n    \"name\": \"Pirelli\",\n    \"note\": \"This is the 1st testrack!\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/resources",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/resources",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/resources/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"resources",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImxzUXlIUno0Ump2anB5MUt5RjgzOSJ9.eyJpc3MiOiJodHRwczovL25zbmR2ZC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjEwMzI5N2U5ZTg2MzQwMDZhNzQ4ZDFkIiwiYXVkIjpbIm5zbmR2ZC11Y3MtYXBpIiwiaHR0cHM6Ly9uc25kdmQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTYyODU1MzU5MSwiZXhwIjoxNjMxMTQ1NTkxLCJhenAiOiJ0dE1ycXB5bTg5dDVIQzVvaUE5M1lZdm9pMlhGWG95TSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6b3duX2Jvb2tpbmdzIiwiZ2V0OmJvb2tpbmdzIiwiZ2V0OmRldmVsb3BlcnMiLCJnZXQ6cmVzb3VyY2VzIiwicG9zdDpib29raW5ncyJdfQ.V32YIXrmJgdTcpifpGErAr47cKbNmgyfGt8KkgwkEMb5-yEVjZcO_p0Gqu5FBOygl4RzuxQRf_Vp0ryNCR4PLKz4R_DLR45FG-TH_qsii_sC2LGGTOIleMmUVpXvM-NqDcgzF9eDD4VISutImyEBaZz_FPhv0hQXLqf4VgCcl1OFFGFopoPNTomyTQs7O3ufxsxfYUzDdFEf7gPU2ISnHqkaXvsKOrfumAqHhzuCrvB9ig3_yQ1IV_A8ONSsYc1ikHSICg61pwKXn3dNX45Ct1wa2dpPtrPUkUExIeF4O8Pi6YA5GWG6r3YtsIVb8onh6Ylb9PxlmYvzOzZ5Pdocew",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "manager",
+			"item": [
+				{
+					"name": "/healthy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains healthy=true\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.healthy).to.be.true",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/healthy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"healthy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/resources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/resources",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/resources",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/resources/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"resources",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/resources",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"img_url\": \"\",\n    \"name\": \"Pirelli\",\n    \"note\": \"This is the 1st testrack!\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/resources",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"resources"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImxzUXlIUno0Ump2anB5MUt5RjgzOSJ9.eyJpc3MiOiJodHRwczovL25zbmR2ZC5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjEwMzI5YWIxYTE2Y2IwMDY4OGQ0ZmI5IiwiYXVkIjpbIm5zbmR2ZC11Y3MtYXBpIiwiaHR0cHM6Ly9uc25kdmQuZXUuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTYyODU1MzM2NiwiZXhwIjoxNjMxMTQ1MzY2LCJhenAiOiJ0dE1ycXB5bTg5dDVIQzVvaUE5M1lZdm9pMlhGWG95TSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJjcmVhdGU6bWFuYWdlcnMiLCJkZWxldGU6YWxsX2Jvb2tpbmdzIiwiZGVsZXRlOmRldmVsb3BlcnMiLCJkZWxldGU6bWFuYWdlcnMiLCJkZWxldGU6b3duX2Jvb2tpbmdzIiwiZGVsZXRlOnJlc291cmNlcyIsImdldDpib29raW5ncyIsImdldDpkZXZlbG9wZXJzIiwiZ2V0OnJlc291cmNlcyIsInBhdGNoOnJlc291cmNlcyIsInBvc3Q6Ym9va2luZ3MiLCJwb3N0OmRldmVsb3BlcnMiLCJwb3N0OnJlc291cmNlcyJdfQ.U1QV2SRfxI0qmPsESbqvFTi0yDr4NSEwV_lQMYKTCywW2hjgltfT8iZjDAjC2eR8MPxDWolm-uT5amzHh1zaFnLK5aYOpTEZZV1Pv-FDH5uuseUSMKornRW2GwSfhIR2NH5nX1fh5HhF9aXBKocH5lz2F6vGo_RzLLM0tx42Hc4_l9VRaDisLTyRg4XL2LNOJrvcWVygAsNVY9hqvtR7U2spBMmQAcQ7w9QhvN5wzGDz9qFownFzRasVgcUsHfliAdoLmmpDyMWbl1E163GDiMIDScLEnQcL9VELmm4XYKvDawohaFzIq1-lxVaoqYb4n05pIDdQAKE5Ei-93VaLXg",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://127.0.0.1:5000"
+		}
+	]
+}
