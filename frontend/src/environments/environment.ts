@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  backend: 'http://127.0.0.1:5000'
+  // backend: 'http://127.0.0.1:5000'
+  backend: 'https://bigpreybirds-grandprix.herokuapp.com'
 };
 
 /*
