@@ -4,4 +4,4 @@ import os
 DEBUG = True
 
 # Connect to the database
-SQLALCHEMY_DATABASE_URI = 'postgresql://grandprix:grandprix@localhost:5432/grandprix'
+SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
