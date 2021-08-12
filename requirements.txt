@@ -10,3 +10,4 @@ app==0.0.1
 asposestorage==1.0.2
 jose==1.0.0
 gunicorn==20.0.4
+psycopg2-binary==2.8.2
