@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7ec658d5-ca85-4690-899a-dab7fb674b6e",
+		"_postman_id": "e65af346-f119-45f3-be1e-a7ee6b66a94d",
 		"name": "grandprix",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -226,8 +226,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
 									"});",
 									""
 								],
@@ -267,8 +267,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
 									"});",
 									""
 								],
@@ -419,6 +419,39 @@
 							],
 							"path": [
 								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/resources",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Pirelli renamed\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/resources/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"resources",
+								"1"
 							]
 						}
 					},
