@@ -8,7 +8,7 @@ db = SQLAlchemy()
 class Developer(db.Model):
   __tablename__ = 'Developer'
   id = Column(Integer, primary_key=True)
-  username = Column(String, nullable=False)
+  username = Column(String, nullable=False, unique=True)
   full_name = Column(String, nullable=False)
 
   def delete(self):
@@ -54,7 +54,7 @@ class Booking(db.Model):
 class Resource(db.Model):
   __tablename__ = 'Resource'
   id = Column(Integer, primary_key=True)
-  name = Column(String)
+  name = Column(String, nullable=False)
   note = Column(String)
   img_url = Column(String)
 
