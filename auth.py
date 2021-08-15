@@ -46,33 +46,34 @@ def check_permissions(permission, payload):
     return True
 
 def verify_decode_jwt(token):
-    our_key = {}
-    well_known_jwks_url = urlopen('https://' + AUTH0_DOMAIN + '/.well-known/jwks.json')
-    jwks = json.loads(well_known_jwks_url.read())
-
-    header = jwt.get_unverified_header(token)
-    if 'kid' not in header:
-        raise AuthError({
-            'code': 'invalid_authentication_header',
-            'description': 'Missing kid in token.'
-        }, 401)
-
-    for key in jwks['keys']:
-        if key['kid'] == header['kid']:
-            our_key = {
-                'kty': key['kty'],
-                'kid': key['kid'],
-                'use': key['use'],
-                'n': key['n'],
-                'e': key['e']
-            }
-    
-    if not our_key:
-        raise AuthError({
-                'code': 'invalid_header',
-                'description': 'Couldn\'t find a key with the right key id.'
-            }, 400)
     try:
+        our_key = {}
+        well_known_jwks_url = urlopen('https://' + AUTH0_DOMAIN + '/.well-known/jwks.json')
+        jwks = json.loads(well_known_jwks_url.read())
+
+        header = jwt.get_unverified_header(token)
+        if 'kid' not in header:
+            raise AuthError({
+                'code': 'invalid_authentication_header',
+                'description': 'Missing kid in token.'
+            }, 401)
+
+        for key in jwks['keys']:
+            if key['kid'] == header['kid']:
+                our_key = {
+                    'kty': key['kty'],
+                    'kid': key['kid'],
+                    'use': key['use'],
+                    'n': key['n'],
+                    'e': key['e']
+                }
+
+        if not our_key:
+            raise AuthError({
+                    'code': 'invalid_header',
+                    'description': 'Couldn\'t find a key with the right key id.'
+                }, 400)
+
         decoded_payload = jwt.decode(
             token,
             our_key,
@@ -109,7 +110,6 @@ def requires_auth(permission=None):
                 if (permission):
                     check_permissions(permission, payload)
             except AuthError as err:
-                print(err)
                 abort(err.status_code, err.error['description'])
             return f(payload, *args, **kwargs)
 

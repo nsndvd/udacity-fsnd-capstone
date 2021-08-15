@@ -239,6 +239,13 @@ def create_app(test_config=None):
       "message": "Resource not found"
       }), 404
 
+  @app.errorhandler(405)
+  def method_not_allowed(error):
+    return jsonify({
+      "error": 405,
+      "message": "Method not allowed"
+      }), 405
+
   @app.errorhandler(422)
   def unprocessable(error):
     return jsonify({
@@ -250,14 +257,21 @@ def create_app(test_config=None):
   def bad_request(error):
     return jsonify({
       "error": 400,
-      "message": "Bad request"
+      "message": error.description or "Bad request"
       }), 400
+
+  @app.errorhandler(401)
+  def unauthorized(error):
+    return jsonify({
+      "error": 401,
+      "message": error.description or 'Unauthorized'
+      }), 401
 
   @app.errorhandler(403)
   def not_allowed(error):
     return jsonify({
       "error": 403,
-      "message": "User not allowed"
+      "message": error.description or 'User not allowed'
       }), 403
 
   @app.errorhandler(500)
