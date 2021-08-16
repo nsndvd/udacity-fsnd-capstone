@@ -26,7 +26,11 @@ More in detail, here are the list of permissions:
 - `post:developers` Create new developers
 - `post:resources` Create new resources
 
-## Backend instructions for running locally
+# Heroku
+
+The API is exposed on Heroku at `https://bigpreybirds-grandprix.herokuapp.com`
+
+# Backend instructions for running locally
 - make sure to run at least `python 3.7`
 - install python dependences with `pip install requirements.txt`
 - Create a psql database and user named `grandprix`. Make sure the user has access rights for the database. In psql console:
@@ -37,12 +41,51 @@ More in detail, here are the list of permissions:
 - Run `export FLASK_APP=app.py`
 - Run `flask run --reload`
 
-## Frontend instructions
+# Frontend instructions
 - navigate to `frontend` folder
 - run `npm install` (you need node and npm)
 - run `ng serve`
 - open your browser on http://localhost:4200
 - to connect to a local backend, change the endpoint in the environments.ts file (default is heroku)
 
-## Running backend tests instructions
-- run `pytest test_api.py`
+# Running backend tests instructions
+In psql console:
+- `CREATE DATABASE grandprix;`
+- `CREATE USER grandprix WITH PASSWORD 'grandprix';`;
+- `GRANT ALL PRIVILEGES ON DATABASE 'grandprix' to grandprix;`
+
+then in console:
+- `psql -U grandprix grandprix < test.pgsql`
+- `python3 test_api.py`
+
+A Postman collection is also present, but it's just a partial implementation. All endpoints and roles are tested in unittests.
+
+# Auth0
+
+Domain: `nsndvd.eu.auth0.com`
+
+ClientId: `ttMrqpym89t5HC5oiA93YYvoi2XFXoyM`
+
+Secret: `Npn2jdmPJnxRnu_OzayDhl7LFTcJ59HT3ukO53B9FMfCfh5RbwAjedEq-JKbMB1p`
+
+## Ready Users
+
+The following users are fully configured on the instance that is running on Heroku, and on the tests.
+
+If new users are created, it's important to note that a new entry must be created in the Users table and the `username` must be set to the value of the `sub` contained in the Authorization token. This value is also displayed in the frontend, after login, just below the page title, in the form `User:<sub>`.
+It's also important to note that only users with the role `manager` can create suche entries.
+
+- Manager user
+    - Role: `Manager`
+    - email: `davide.ensini+manager@gmail.com`
+    - password: `helloUdacityR3vi3wer`
+
+- Developer Alice user
+    - Role: `Developer`
+    - email: `davide.ensini+developeralice@gmail.com`
+    - password: `helloUdacityR3vi3wer`
+
+- Developer Bob user
+    - Role: `Developer`
+    - email: `davide.ensini+developerbob@gmail.com`
+    - password: `helloUdacityR3vi3wer`
