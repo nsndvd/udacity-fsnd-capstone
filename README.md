@@ -38,6 +38,12 @@ More in detail, here are the list of permissions:
 
 The API is exposed on Heroku at `https://bigpreybirds-grandprix.herokuapp.com`
 
+## How to deploy
+```
+git remote add heroku https://git.heroku.com/bigpreybirds-grandprix.git
+git push heroku master
+```
+
 # Backend instructions for running locally
 - make sure to run at least `python 3.7`
 - install python dependences with `pip install requirements.txt`
@@ -99,3 +105,77 @@ It's also important to note that only users with the role `manager` can create s
     - password: `helloUdacityR3vi3wer`
 
 # API Endpoints
+
+### GET '/healthy'
+`curl -X GET http://{{host}}/healthy -H "Content-Type: application/json"`
+- Authorization: `public`
+- Checks if the APIs are alive
+- Returns: A JSON containing `{healthy: true}`
+
+### GET '/resources'
+`curl -X GET http://{{host}}/resources  -H "Content-Type: application/json" -H "Authorization: Bearer {{user token}}"`
+- Authorization: requires permission `get:resources`
+- Fetches the available resources
+- Returns: A JSON list containing the available resources.
+
+### POST '/resources/'
+`curl -d '{"name": "The resource name", "note": "Some notes about the resourc", "img_url": "The url for this resource"}' -X POST http://{{host}}/resources  -H "Content-Type: application/json" -H "Authorization: Bearer {{user token}}"`
+- Authorization: requires permission `post:resources`
+- Adds a new resource
+- Payload: a JSON representation of the resource to be added.
+- Returns: A JSON object representing the added resource.
+
+### PATCH '/resources/<int:resource_id>'
+`curl -d '{"name": "The resource name", "note": "Some notes about the resourc", "img_url": "The url for this resource"}' -X PATCH http://{{host}}/resources/{{resource_id}}  -H "Content-Type: application/json" -H "Authorization: Bearer {{user token}}"`
+- Authorization: requires permission `patch:resources`
+- Edits an existing resource
+- Argument: the id for the resource to be edited
+- Payload: the fields to be edited, with their new value
+- Returns: A JSON object representing the modified resource.
+
+### DELETE '/resources/<int:resource_id>'
+`curl -X DELETE http://{{host}}/resources/{{resource_id}}  -H "Content-Type: application/json" -H "Authorization: Bearer {{user token}}"`
+- Authorization: requires permission `delete:resources`
+- Deletes an existing resource
+- Argument: the id for the resource to be deleted
+- Returns: A JSON object containing `{deleted_id=<resource_id>}`
+
+### GET '/developers/'
+`curl -X GET http://{{host}}/deveolpers/ -H "Content-Type: application/json" -H "Authorization: Bearer {{user token}}"`
+- Authorization: requires permission `get:developers`
+- Fetches the existing developers
+- Returns: A JSON list of the esisting developers
+
+### POST '/developers/'
+`curl -d '{"full_name": "The developer name", "username": "the developer sub from Auth0"}' -X POST http://{{host}}/developers  -H "Content-Type: application/json" -H "Authorization: Bearer {{user token}}"`
+- Authorization: requires permission `post:developers`
+- Adds a new developer
+- Payload: a JSON representation of the developer to be added.
+- Returns: A JSON object representing the added developer.
+
+### DELETE '/developers/<int:developer_id>'
+`curl -X DELETE http://{{host}}/developers/{{developer_id}}  -H "Content-Type: application/json" -H "Authorization: Bearer {{user token}}"`
+- Authorization: requires permission `delete:developers`
+- Deletes an existing developer
+- Argument: the id for the developer to be deleted
+- Returns: A JSON object containing `{deleted_id=<developer_id>}`
+
+### GET '/bookings/'
+`curl -X GET http://{{host}}/bookings/ -H "Content-Type: application/json" -H "Authorization: Bearer {{user token}}"`
+- Authorization: requires permission `get:bookings`
+- Fetches the existing bookings
+- Returns: A JSON list of the esisting bookings
+
+### POST '/bookings/'
+`curl -d '{"resource_id": <resource_id>, expected_duration_hours: <expected_hours>}' -X POST http://{{host}}/bookings  -H "Content-Type: application/json" -H "Authorization: Bearer {{user token}}"`
+- Authorization: requires permission `post:bookings`
+- Adds a new booking, that is associated to the developer who is currently logged in. The Authorization token is here used for recognizing the developer.
+- Payload: a JSON representation of the booking to be added.
+- Returns: A JSON object representing the added booking.
+
+### DELETE '/bookings/<int:booking_id>'
+`curl -X DELETE http://{{host}}/bookings/{{booking_id}}  -H "Content-Type: application/json" -H "Authorization: Bearer {{user token}}"`
+- Authorization: requires permission `delete:own_booking` if deleting an own permission, or `delete:all_bookings` if deleting somebody else's booking.
+- Deletes an existing booking
+- Argument: the id for the booking to be deleted
+- Returns: A JSON object containing `{deleted_id=<booking_id>}`
