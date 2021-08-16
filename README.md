@@ -2,9 +2,15 @@
 
 *Grand prix* is a resource booking system for a software company.
 
+## Motivation
+
+Our remote team is sharing some `resource`s in the office. We need a system to list available resources, and to give `developer`s a way to `book` these resources when they start working with them. Each developer can book many resources, but one resource can be booked by only one developer at a time. `Managers` can decide to cancel a booking that belongs to some other developer. Normal developers can only cancel their own bookings.
+
+## Roles
+
 There are two user roles, `developer` and `manager`.
 Developers can book shared resources for themselves. Developers can always book a free resources, and can always release a resource that they own.
-Managers can always free resources for everybody. Managers can also configure resources and users.
+Managers can always free resources, no matter who booked them. Managers can also configure resources and developers.
 
 More in detail, here are the list of permissions:
 ### Developer:

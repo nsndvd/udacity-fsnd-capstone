@@ -1,14 +1,14 @@
 import json
+import os
 from flask import request, abort
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
 
 
-AUTH0_DOMAIN = 'nsndvd.eu.auth0.com'
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'nsndvd-ucs-api'
-
+AUTH0_DOMAIN = os.environ['AUTH0_DOMAIN']
+ALGORITHMS = [os.environ['ALGORITHM']]
+API_AUDIENCE = os.environ['API_AUDIENCE']
 
 class AuthError(Exception):
     def __init__(self, error, status_code):
