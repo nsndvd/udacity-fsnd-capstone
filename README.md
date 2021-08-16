@@ -6,6 +6,8 @@
 
 Our remote team is sharing some `resource`s in the office. We need a system to list available resources, and to give `developer`s a way to `book` these resources when they start working with them. Each developer can book many resources, but one resource can be booked by only one developer at a time. `Managers` can decide to cancel a booking that belongs to some other developer. Normal developers can only cancel their own bookings.
 
+The name, `grandprix`, is due to the fact that normally our resources are named after companies involved in car races.
+
 ## Roles
 
 There are two user roles, `developer` and `manager`.
@@ -95,3 +97,5 @@ It's also important to note that only users with the role `manager` can create s
     - Role: `Developer`
     - email: `davide.ensini+developerbob@gmail.com`
     - password: `helloUdacityR3vi3wer`
+
+# API Endpoints
